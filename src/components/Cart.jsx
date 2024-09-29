@@ -15,7 +15,7 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart, applyDiscount }) => {
 
   return (
     <div className="border p-4 shadow-sm">
-      <h2 className="text-xl font-bold mb-4">Shopping Cart</h2>
+      <h2 className="text-xl font-bold mb-4">รายการ</h2>
       {cartItems.length === 0 ? (
         <p>No items in cart.</p>
       ) : (
@@ -23,7 +23,7 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart, applyDiscount }) => {
           {cartItems.map((item) => (
             <div key={item.id} className="flex justify-between items-center mb-2">
               <div>
-                {item.name} - {item.price} THB
+                {item.name} - {item.price} บาท
               </div>
               <div>
                 <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
@@ -31,15 +31,15 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart, applyDiscount }) => {
                 <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
               </div>
               <button className="ml-4 text-red-500" onClick={() => removeFromCart(item.id)}>
-                Remove
+                ลบรายการ
               </button>
             </div>
           ))}
           <div className="mt-4">
-            <h3 className="text-lg">Total: {total} THB</h3>
-            <p>Shipping Cost: {shippingCost} THB</p>
+            <h3 className="text-lg">รวมทั้งหมด: {total} บาท</h3>
+            <p>ค่าขนส่ง: {shippingCost} บาท</p>
             <h3 className="text-lg font-bold">
-              Grand Total: {total + shippingCost} THB
+              ราคารวมทั้งหมด: {total + shippingCost} บาท
             </h3>
           </div>
           <div className="mt-4">
@@ -47,14 +47,14 @@ const Cart = ({ cartItems, updateQuantity, removeFromCart, applyDiscount }) => {
               type="text"
               value={coupon}
               onChange={(e) => setCoupon(e.target.value)}
-              placeholder="Enter coupon code"
+              placeholder="ใส่คูปอง"
               className="border py-1 px-2"
             />
             <button
               onClick={handleCouponApply}
               className="ml-2 bg-green-500 text-white py-1 px-4 rounded"
             >
-              Apply Coupon
+              เพิ่มคูปอง
             </button>
           </div>
         </div>
